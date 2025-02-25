@@ -1,83 +1,351 @@
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #f9fafb;
     margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
 }
+
 .navbar {
-    background-color: white;
-    border-bottom: 1px solid #e2e2e2;
+    background-color: #fff;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.navbar img {
-    height: 30px;
-}
-.navbar .menu {
+
+.menu {
     display: flex;
     align-items: center;
 }
-.navbar .menu > div {
+
+.menu img {
+    height: 40px;
+    margin-right: 20px;
+}
+
+.dropdown-container {
     position: relative;
     margin-right: 20px;
 }
-.navbar .menu > div > button {
+
+button {
     background: none;
     border: none;
-    font-size: 16px;
     color: #333;
+    font-weight: bold;
     cursor: pointer;
+    padding: 10px;
 }
-.navbar .menu > div > button:hover {
-    color: #0070f3;
-}
-.navbar .menu > div > .dropdown {
+
+.dropdown {
     display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
     background-color: white;
-    border: 1px solid #e2e2e2;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
 }
-.navbar .menu > div:hover > .dropdown {
+
+.dropdown-container:hover .dropdown {
     display: block;
 }
-.navbar .menu > div > .dropdown a {
+
+.dropdown a {
     display: block;
-    padding: 10px 20px;
+    padding: 10px;
     color: #333;
     text-decoration: none;
 }
-.navbar .menu > div > .dropdown a:hover {
-    background-color: #f5f5f5;
+
+.dropdown a:hover {
+    background-color: #f0f0f0;
 }
-.navbar .actions {
+
+.actions {
     display: flex;
     align-items: center;
 }
-.navbar .actions a {
+
+.actions a {
     margin-right: 20px;
-    color: #333;
+    color: #007bff;
     text-decoration: none;
 }
-.navbar .actions a:hover {
-    color: #0070f3;
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.navbar .actions button {
-    background-color: #0070f3;
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+}
+
+.tab.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.my-bookings {
+    text-align: right;
+}
+
+.my-bookings-button {
+    background-color: #007bff;
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 20px;
+    border-radius: 4px;
     cursor: pointer;
 }
-.navbar .actions button:hover {
-    background-color: #005bb5;
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
-.hidden { display: none; }
-.footer {
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.hidden {
+    display: block;
+}
+
+.form-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.radio-group {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.radio-group label {
+    margin-right: 20px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.class-group, .seat-type-group, .date-group {
+    margin-bottom: 20px;
+}
+
+.class-group span, .seat-type-group span, .date-group span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.class-group button, .seat-type-group button, .date-group button {
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #007bff;
     background-color: white;
+    color: #007bff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.class-group button.active, .seat-type-group button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.search-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.recharges, .bill-payments {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 48%;
+}
+
+.recharge-options, .bill-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.option {
+    text-align: center;
+    cursor: pointer;
+}
+
+.option i {
+    font-size: 24px;
+    color: #007bff;
+}
+
+.promo {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.promo button {
+    background-color: white;
+    color: #007bff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.product-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.product-modal .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.product-modal h2 {
+    color: white;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.product {
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.customer-support {
+    margin: 20px 0;
+}
+
+.support-banner {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.credit-cards, .insurance {
+    margin-bottom: 20px;
+}
+
+.credit-card-header, .insurance-header {
+    display: flex;
+    align-items: center;
+}
+
+.credit-card-header i, .insurance-header img {
+    margin-right: 10px;
+}
+
+.credit-card-logos {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.credit-card-logos img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+footer {
+    background-color: #fff;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-media {
+    display: flex;
+    align-items: center;
+}
+
+.social-media span {
+    margin-right: 10px;
+}
+
+.footer-divider {
+    height: 2px;
+    background-color: #007bff;
 }

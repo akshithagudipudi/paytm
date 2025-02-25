@@ -6,14 +6,13 @@
     <title>Paytm Navigation and Services</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="menu">
             <img src="./assests/logo.png" alt="Paytm logo with UPI text">
-            <div>
+            <div class="dropdown-container">
                 <button>Ticket Booking</button>
                 <div class="dropdown">
                     <a href="#">Movie Tickets</a>
@@ -22,7 +21,7 @@
                     <a href="#">Bus Tickets</a>
                 </div>
             </div>
-            <div>
+            <div class="dropdown-container">
                 <button>Recharge & Bills</button>
                 <div class="dropdown">
                     <a href="#">Mobile Recharge</a>
@@ -36,7 +35,7 @@
                     <a href="#">Challan</a>
                 </div>
             </div>
-            <div>
+            <div class="dropdown-container">
                 <button>Payments & Services</button>
                 <div class="dropdown">
                     <a href="#">Payments</a>
@@ -55,7 +54,7 @@
                     <a href="#">Paytm Gold</a>
                 </div>
             </div>
-            <div>
+            <div class="dropdown-container">
                 <button>Paytm for Business</button>
                 <div class="dropdown">
                     <a href="#">Online Payments</a>
@@ -83,7 +82,7 @@
                     <a href="#">For Developers - API</a>
                 </div>
             </div>
-            <div>
+            <div class="dropdown-container">
                 <button>Company</button>
                 <div class="dropdown">
                     <a href="#">About</a>
@@ -105,580 +104,341 @@
         </div>
     </nav>
 
-    <div class="container mx-auto p-4">
-        <div class="flex justify-between items-center mb-4">
-            <div class="flex space-x-4">
-                <a href="#" id="flights-tab" class="text-blue-500" onclick="showTab('flights')"><i class="fas fa-plane"></i> Flights</a>
-                <a href="#" id="bus-tab" class="text-blue-500 border-b-2 border-blue-500" onclick="showTab('bus')"><i class="fas fa-bus"></i> Bus</a>
-                <a href="#" id="trains-tab" class="text-blue-500" onclick="showTab('trains')"><i class="fas fa-train"></i> Trains</a>
-                <a href="#" id="intl-flights-tab" class="text-blue-500" onclick="showTab('intl-flights')"><i class="fas fa-globe"></i> Intl. Flights</a>
-            </div>
-            <div>
-                <button class="flex items-center text-gray-700 border border-gray-300 rounded-full px-4 py-2">
-                    <i class="fas fa-user-circle mr-2"></i> My Bookings
-                </button>
+    <div class="container">
+        <div class="tabs">
+            <a href="#" id="flights-tab" class="tab" onclick="showTab('flights')"><i class="fas fa-plane"></i> Flights</a>
+            <a href="#" id="bus-tab" class="tab active" onclick="showTab('bus')"><i class="fas fa-bus"></i> Bus</a>
+            <a href="#" id="trains-tab" class="tab" onclick="showTab('trains')"><i class="fas fa-train"></i> Trains</a>
+            <a href="#" id="intl-flights-tab" class="tab" onclick="showTab('intl-flights')"><i class="fas fa-globe"></i> Intl. Flights</a>
+        </div>
+        <div class="my-bookings">
+            <button class="my-bookings-button">
+                <i class="fas fa-user-circle"></i> My Bookings
+            </button>
+        </div>
+        <h1>Book tickets</h1>
+        <div id="flights" class="tab-content hidden">
+            <div class="form-container">
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="trip" checked>
+                        One Way
+                    </label>
+                    <label>
+                        <input type="radio" name="trip">
+                        Round trip
+                    </label>
+                </div>
+                <div class="input-group">
+                    <input type="text" placeholder="From">
+                    <input type="text" placeholder="To">
+                </div>
+                <div class="class-group">
+                    <span>Class (optional)</span>
+                    <button>Economy</button>
+                    <button>Business</button>
+                    <button>First Class</button>
+                    <label>
+                        <input type="checkbox">
+                        Show Direct Flights only
+                    </label>
+                </div>
+                <div class="date-group">
+                    <span>Departure Date</span>
+                    <button class="active">23<br>Today</button>
+                    <button>24<br>Mon</button>
+                    <button>25<br>Tue</button>
+                    <button>26<br>Wed</button>
+                    <button>27<br>Thu</button>
+                    <button><i class="fas fa-calendar-alt"></i> Calendar</button>
+                </div>
+                <button class="search-button">Search Flights</button>
             </div>
         </div>
-        <h1 class="text-2xl font-bold mb-4">Book tickets</h1>
-        <div id="flights" class="hidden">
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <div class="flex items-center mb-4">
-                    <label class="flex items-center mr-4">
-                        <input type="radio" name="trip" class="form-radio text-blue-500" checked>
-                        <span class="ml-2">One Way</span>
+        <div id="bus" class="tab-content hidden">
+            <div class="form-container">
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="trip" checked>
+                        One Way
                     </label>
-                    <label class="flex items-center">
-                        <input type="radio" name="trip" class="form-radio text-blue-500">
-                        <span class="ml-2 ">Round trip</span>
-                    </label>
-                </div>
-                <div class="flex flex-col md:flex-row items-center mb-4">
-                    <input type="text" placeholder="From" class="border border-gray-300 rounded-lg p-2 w-full md:mr-2 mb-2 md:mb-0">
-                    <i class="fas fa-exchange-alt text-gray-500 hidden md:block"></i>
-                    <input type="text" placeholder="To" class="border border-gray-300 rounded-lg p-2 w-full md:ml-2">
-                </div>
-                <div class="flex flex-col md:flex-row items-center mb-4">
-                    <span class="text-gray-500 mr-4">Class (optional)</span>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mr-2 mb-2 md:mb-0">Economy</button>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mr-2 mb-2 md:mb-0">Business</button>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mb-2 md:mb-0">First Class</button>
-                    <label class="flex items-center ml-auto">
-                        <input type="checkbox" class="form-checkbox text-blue-500">
-                        <span class="ml-2">Show Direct Flights only</span>
+                    <label>
+                        <input type="radio" name="trip">
+                        Round trip
                     </label>
                 </div>
-                <div class="flex flex-col md:flex-row items-center mb-4">
-                    <span class="text-gray-500 mr-4">Departure Date</span>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0 bg-blue-500 text-white">23<br>Today</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">24<br>Mon</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">25<br>Tue</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">26<br>Wed</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">27<br>Thu</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 flex items-center">
-                        <i class="fas fa-calendar-alt mr-2"></i> Calendar
-                    </button>
+                <div class="input-group">
+                    <input type="text" placeholder="From">
+                    <input type="text" placeholder="To">
                 </div>
-                <button class="bg-blue-500 text-white rounded-lg px-6 py-2 w-full">Search Flights</button>
+                <div class="seat-type-group">
+                    <span>Seat type (optional)</span>
+                    <button>Seater</button>
+                    <button>Sleeper</button>
+                    <button>Semi-Sleeper</button>
+                    <label>
+                        <input type="checkbox">
+                        Show AC Buses only
+                    </label>
+                </div>
+                <div class="date-group">
+                    <span>Departure Date</span>
+                    <button class="active">23<br>Today</button>
+                    <button>24<br>Mon</button>
+                    <button>25<br>Tue</button>
+                    <button>26<br>Wed</button>
+                    <button>27<br>Thu</button>
+                    <button><i class="fas fa-calendar-alt"></i> Calendar</button>
+                </div>
+                <button class="search-button">Search Buses</button>
             </div>
         </div>
-        <div id="bus" class="hidden">
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <div class="flex items-center mb-4">
-                    <label class="flex items-center mr-4">
-                        <input type="radio" name="trip" class="form-radio text-blue-500" checked>
-                        <span class="ml-2">One Way</span>
+        <div id="trains" class="tab-content hidden">
+            <div class="form-container">
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="trip" checked>
+                        One Way
                     </label>
-                    <label class="flex items-center">
-                        <input type="radio" name="trip" class="form-radio text-blue-500">
-                        <span class="ml-2">Round trip</span>
-                    </label>
-                </div>
-                <div class="flex flex-col md:flex-row items-center mb-4">
-                    <input type="text" placeholder="From" class="border border-gray-300 rounded-lg p-2 w-full md:mr-2 mb-2 md:mb-0">
-                    <i class="fas fa-exchange-alt text-gray-500 hidden md:block"></i>
-                    <input type="text" placeholder="To" class="border border-gray-300 rounded-lg p-2 w-full md:ml-2">
-                </div>
-                <div class="flex flex-col md:flex-row items-center mb-4">
-                    <span class="text-gray-500 mr-4">Seat type (optional)</span>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mr-2 mb-2 md:mb-0">Seater</button>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mr-2 mb-2 md:mb-0">Sleeper</button>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mb-2 md:mb-0">Semi-Sleeper</button>
-                    <label class="flex items-center ml-auto" ,input type="checkbox" ,class="form-checkbox text-blue-500">
-                        <span class="ml-2">Show AC Buses only</span>
+                    <label>
+                        <input type="radio" name="trip">
+                        Round trip
                     </label>
                 </div>
-                <div class="flex flex-col md:flex-row items-center mb-4">
-                    <span class="text-gray-500 mr-4">Departure Date</span>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0 bg-blue-500 text-white">23<br>Today</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">24<br>Mon</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">25<br>Tue</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">26<br>Wed</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">27<br>Thu</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 flex items-center">
-                        <i class="fas fa-calendar-alt mr-2"></i> Calendar
-                    </button>
+                <div class="input-group">
+                    <input type="text" placeholder="From">
+                    <input type="text" placeholder="To">
                 </div>
-                <button class="bg-blue-500 text-white rounded-lg px-6 py-2 w-full">Search Buses</button>
+                <div class="class-group">
+                    <span>Class (optional)</span>
+                    <button>Sleeper</button>
+                    <button>3A</button>
+                    <button>2A</button>
+                    <button>1A</button>
+                    <label>
+                        <input type="checkbox">
+                        Show AC Trains only
+                    </label>
+                </div>
+                <div class="date-group">
+                    <span>Departure Date</span>
+                    <button class="active">23<br>Today</button>
+                    <button>24<br>Mon</button>
+                    <button>25<br>Tue</button>
+                    <button>26<br>Wed</button>
+                    <button>27<br>Thu</button>
+                    <button><i class="fas fa-calendar-alt"></i> Calendar</button>
+                </div>
+                <button class="search-button">Search Trains</button>
             </div>
         </div>
-        <div id="trains" class="hidden">
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <div class="flex items-center mb-4">
-                    <label class="flex items-center mr-4">
-                        <input type="radio" name="trip" class="form-radio text-blue-500" checked>
-                        <span class="ml-2">One Way</span>
+        <div id="intl-flights" class="tab-content hidden">
+            <div class="form-container">
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="trip" checked>
+                        One Way
                     </label>
-                    <label class="flex items-center">
-                        <input type="radio" name="trip" class="form-radio text-blue-500">
-                        <span class="ml-2">Round trip</span>
-                    </label>
-                </div>
-                <div class="flex flex-col md:flex-row items-center mb-4">
-                    <input type="text" placeholder="From" class="border border-gray-300 rounded-lg p-2 w-full md:mr-2 mb-2 md:mb-0">
-                    <i class="fas fa-exchange-alt text-gray-500 hidden md:block"></i>
-                    <input type="text" placeholder="To" class="border border-gray-300 rounded-lg p-2 w-full md:ml-2">
-                </div>
-                <div class="flex flex-col md:flex-row items-center mb-4">
-                    <span class="text-gray-500 mr-4">Class (optional)</span>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mr-2 mb-2 md:mb-0">Sleeper</button>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mr-2 mb-2 md:mb-0">3A</button>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mb-2 md:mb-0">2A</button>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mb-2 md:mb-0">1A</button>
-                    <label class="flex items-center ml-auto">
-                        <input type="checkbox" class="form-checkbox text-blue-500">
-                        <span class="ml-2">Show AC Trains only</span>
+                    <label>
+                        <input type="radio" name="trip">
+                        Round trip
                     </label>
                 </div>
-                <div class="flex flex-col md:flex-row items-center mb-4">
-                    <span class="text-gray-500 mr-4">Departure Date</span>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0 bg-blue-500 text-white">23<br>Today</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">24<br>Mon</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">25<br>Tue</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">26<br>Wed</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">27<br>Thu</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 flex items-center">
-                        <i class="fas fa-calendar-alt mr-2"></i> Calendar
-                    </button>
+                <div class="input-group">
+                    <input type="text" placeholder="From">
+                    <input type="text" placeholder="To">
                 </div>
-                <button class="bg-blue-500 text-white rounded-lg px-6 py-2 w-full">Search Trains</button>
-            </div>
-        </div>
-        <div id="intl-flights" class="hidden">
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <div class="flex items-center mb-4">
-                    <label class="flex items-center mr-4">
-                        <input type="radio" name="trip" class="form-radio text-blue-500" checked>
-                        <span class="ml-2">One Way</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="radio" name="trip" class="form-radio text-blue-500">
-                        <span class="ml-2">Round trip</span>
+                <div class="class-group">
+                    <span>Class (optional)</span>
+                    <button>Economy</button>
+                    <button>Business</button>
+                    <button>First Class</button>
+                    <label>
+                        <input type="checkbox">
+                        Show Direct Flights only
                     </label>
                 </div>
-                <div class="flex flex-col md:flex-row items-center mb-4">
-                    <input type="text" placeholder="From" class="border border-gray-300 rounded-lg p-2 w-full md:mr-2 mb-2 md:mb-0">
-                    <i class="fas fa-exchange-alt text-gray-500 hidden md:block"></i>
-                    <input type="text" placeholder="To" class="border border-gray-300 rounded-lg p-2 w-full md:ml-2">
+                <div class="date-group">
+                    <span>Departure Date</span>
+                    <button class="active">23<br>Today</button>
+                    <button>24<br>Mon</button>
+                    <button>25<br>Tue</button>
+                    <button>26<br>Wed</button>
+                    <button>27<br>Thu</button>
+                    <button><i class="fas fa-calendar-alt"></i> Calendar</button>
                 </div>
-                <div class="flex flex-col md:flex-row items-center mb-4">
-                    <span class="text-gray-500 mr-4">Class (optional)</span>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mr-2 mb-2 md:mb-0">Economy</button>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mr-2 mb-2 md:mb-0">Business</button>
-                    <button class="border border-gray-300 rounded-full px-4 py-2 mb-2 md:mb-0">First Class</button>
-                    <label class="flex items-center ml-auto">
-                        <input type="checkbox" class="form-checkbox text-blue-500">
-                        <span class="ml-2">Show Direct Flights only</span>
-                    </label>
-                </div>
-                <div class="flex flex-col md:flex-row items-center mb-4">
-                    <span class="text-gray-500 mr-4">Departure Date</span>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0 bg-blue-500 text-white">23<br>Today</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">24<br>Mon</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">25<br>Tue</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">26<br>Wed</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 mr-2 mb-2 md:mb-0">27<br>Thu</button>
-                    <button class="border border-gray-300 rounded-lg px-4 py-2 flex items-center">
-                        <i class="fas fa-calendar-alt mr-2"></i> Calendar
-                    </button>
-                </div>
-                <button class="bg-blue-500 text-white rounded-lg px-6 py-2 w-full">Search Intl. Flights</button>
+                <button class="search-button">Search Intl. Flights</button>
             </div>
         </div>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-center items-center p-4 space-y-4 md:space-y-0 md:space-x-4">
-        <div class="bg-white rounded-lg shadow-md p-6 w-full md:w-1/2">
-            <h2 class="text-xl font-semibold mb-4">Recharges</h2>
-            <div class="flex justify-between items-center mb-4">
-                <div class="flex flex-col items-center cursor-pointer" onclick="window.location.href='#'">
-                    <i class="fas fa-mobile-alt text-3xl text-blue-500 mb-2"></i>
+    <div class="flex-container">
+        <div class="recharges">
+            <h2>Recharges</h2>
+            <div class="recharge-options">
+                <div class="option" onclick="window.location.href='#'">
+                    <i class="fas fa-mobile-alt"></i>
                     <span>Mobile Recharge</span>
                 </div>
-                <div class="flex flex-col items -center cursor-pointer" onclick="window.location.href='#'">
-                    <i class="fas fa-tv text-3xl text-blue-500 mb-2"></i>
+                <div class="option" onclick="window.location.href='#'">
+                    <i class="fas fa-tv"></i>
                     <span>DTH Recharge</span>
                 </div>
-                <div class="flex flex-col items-center cursor-pointer" onclick="window.location.href='#'">
-                    <i class="fas fa-car text-3xl text-blue-500 mb-2"></i>
+                <div class="option" onclick="window.location.href='#'">
+                    <i class="fas fa-car"></i>
                     <span>FasTag Recharge</span>
                 </div>
-                <div class="flex flex-col items-center cursor-pointer" onclick="toggleProducts('recharge-products')">
-                    <i class="fas fa-arrow-right text-3xl text-blue-500 mb-2"></i>
+                <div class="option" onclick="toggleProducts('recharge-products')">
+                    <i class="fas fa-arrow-right"></i>
                     <span>View All Products</span>
                 </div>
             </div>
-            <div class="bg-blue-500 text-white rounded-lg p-4 flex justify-between items-center">
-                <div class="flex items-center">
-                    <i class="fas fa-mobile-alt text-3xl mr-2"></i>
-                    <span>Do <strong>Mobile Recharge</strong> and Win ₹100 cashback. Promo: <strong>TAKEITALL</strong></span>
-                </div>
-                <button class="bg-white text-blue-500 rounded-full px-4 py-2 font-semibold">Recharge Now <i class="fas fa-arrow-right"></i></button>
+            <div class="promo">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Do <strong>Mobile Recharge</strong> and Win ₹100 cashback. Promo: <strong>TAKEITALL</strong></span>
+                <button>Recharge Now <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow-md p-6 w-full md:w-1/2">
-            <h2 class="text-xl font-semibold mb-4">Bill Payments</h2>
-            <div class="flex justify-between items-center mb-4">
-                <div class="flex flex-col items-center cursor-pointer" onclick="window.location.href='#'">
-                    <i class="fas fa-credit-card text-3xl text-blue-500 mb-2"></i>
+        <div class="bill-payments">
+            <h2>Bill Payments</h2>
+            <div class="bill-options">
+                <div class="option" onclick="window.location.href='#'">
+                    <i class="fas fa-credit-card"></i>
                     <span>Credit Card Payment</span>
                 </div>
-                <div class="flex flex-col items-center cursor-pointer" onclick="window.location.href='#'">
-                    <i class="fas fa-lightbulb text-3xl text-blue-500 mb-2"></i>
+                <div class="option" onclick="window.location.href='#'">
+                    <i class="fas fa-lightbulb"></i>
                     <span>Electricity Bill</span>
                 </div>
-                <div class="flex flex-col items-center cursor-pointer" onclick="window.location.href='#'">
-                    <i class="fas fa-wifi text-3xl text-blue-500 mb-2"></i>
+                <div class="option" onclick="window.location.href='#'">
+                    <i class="fas fa-wifi"></i>
                     <span>Broadband Bill</span>
                 </div>
-                <div class="flex flex-col items-center cursor-pointer" onclick="toggleProducts('bill-products')">
-                    <i class="fas fa-arrow-right text-3xl text-blue-500 mb-2"></i>
+                <div class="option" onclick="toggleProducts('bill-products')">
+                    <i class="fas fa-arrow-right"></i>
                     <span>View All Products</span>
                 </div>
             </div>
-            <div class="bg-blue-500 text-white rounded-lg p-4 flex justify-between items-center">
-                <div class="flex items-center">
-                    <i class="fas fa-wifi text-3xl mr-2"></i>
-                    <span><strong>Broadband Recharge</strong> Bill due? Pay now & get rewarded</span>
-                </div>
-                <button class="bg-white text-blue-500 rounded-full px-4 py-2 font-semibold">Pay Now <i class="fas fa-arrow-right"></i></button>
+            <div class="promo">
+                <i class="fas fa-wifi"></i>
+                <span><strong>Broadband Recharge</strong> Bill due? Pay now & get rewarded</span>
+                <button>Pay Now <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
     </div>
 
-    <div id="recharge-products" class="hidden bg-white rounded-lg shadow-md p-6 m-4 relative">
-        <button class="absolute top-2 right-2 text-gray-500" onclick="toggleProducts('recharge-products')">
-            <i class="fas fa-times text-2xl"></i>
+    <div id="recharge-products" class="hidden product-modal">
+        <button class="close-button" onclick="toggleProducts('recharge-products')">
+            <i class="fas fa-times"></i>
         </button>
-        <h2 class="text-xl font-semibold mb-4">Recharge & Pay Bills</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="flex flex-col items-center">
-                <i class="fas fa-wifi text-3xl text-blue-500 mb-2"></i>
-                <span>Broadband / Landline</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-graduation-cap text-3xl text-blue-500 mb-2"></i>
-                <span>Education</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-money-check-alt text-3xl text-blue-500 mb-2"></i>
-                <span>Pay Loan</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-building text-3xl text-blue-500 mb-2"></i>
-                <span>Apartments</span>
-            
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-gas-pump text-3xl text-blue-500 mb-2"></i>
-                <span>Piped Gas</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-tint text-3xl text-blue-500 mb-2"></i>
-                <span>Water Bill</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-city text-3xl text-blue-500 mb-2"></i>
-                <span>Municipal Tax</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-ticket-alt text-3xl text-blue-500 mb-2"></i>
-                <span>Challan</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-road text-3xl text-blue-500 mb-2"></i>
-                <span>Toll</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-tv text-3xl text-blue-500 mb-2"></i>
-                <span>Cable TV</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-sim-card text-3xl text-blue-500 mb-2"></i>
-                <span>Data Card</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-car text-3xl text-blue-500 mb-2"></i>
-                <span>FASTag Recharge</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-subway text-3xl text-blue-500 mb-2"></i>
-                <span>Metro</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-praying-hands text-3xl text-blue-500 mb-2"></i>
-                <span>Devotion</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-hand-holding-heart text-3xl text-blue-500 mb-2"></i>
-                <span>Donation</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-shopping-cart text-3xl text-blue-500 mb-2"></i>
-                <span>Book & Buy</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-car text-3xl text-blue-500 mb-2"></i>
-                <span>FASTag</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-coins text-3xl text-blue-500 mb-2"></i>
-                <span>Gold</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-shield-alt text-3xl text-blue-500 mb-2"></i>
-                <span>Insurance</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-ticket-alt text-3xl text-blue-500 mb-2"></i>
-                <span>IMAX Tickets</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-train text-3xl text-blue-500 mb-2"></i>
-                <span>PNR Check</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-shipping-fast text-3xl text-blue-500 mb-2"></i>
-                <span>Tracking</span>
-            </div>
+        <h2>Recharge & Pay Bills</h2>
+        <div class="product-grid">
+            <div class="product"><i class="fas fa-wifi"></i><span>Broadband / Landline</span></div>
+            <div class="product"><i class="fas fa-graduation-cap"></i><span>Education</span></div>
+            <div class="product"><i class="fas fa-money-check-alt"></i><span>Pay Loan</span></div>
+            <div class="product"><i class="fas fa-building"></i><span>Apartments</span></div>
+            <div class="product"><i class="fas fa-gas-pump"></i><span>Piped Gas</span></div>
+            <div class="product"><i class="fas fa-tint"></i><span>Water Bill</span></div>
+            <div class="product"><i class="fas fa-city"></i><span>Municipal Tax</span></div>
+            <div class="product"><i class="fas fa-ticket-alt"></i><span>Challan</span></div>
+            <div class="product"><i class="fas fa-road"></i><span>Toll</span></div>
+            <div class="product"><i class="fas fa-tv"></i><span>Cable TV</span></div>
+            <div class="product"><i class="fas fa-sim-card"></i><span>Data Card</span></div>
+            <div class="product"><i class="fas fa-car"></i><span>FASTag Recharge</span></div>
+            <div class="product"><i class="fas fa-subway"></i><span>Metro</span></div>
+            <div class="product"><i class="fas fa-praying-hands"></i><span>Devotion</span></div>
+            <div class="product"><i class="fas fa-hand-holding-heart"></i><span>Donation</span></div>
+            <div class="product"><i class="fas fa-shopping-cart"></i><span>Book & Buy</span></div>
+            <div class="product"><i class="fas fa-car"></i><span>FASTag</span></div>
+            <div class="product"><i class="fas fa-coins"></i><span>Gold</span></div>
+            <div class="product"><i class="fas fa-shield-alt"></i><span>Insurance</span></div>
+            <div class="product"><i class="fas fa-ticket-alt"></i><span>IMAX Tickets</span></div>
+            <div class="product"><i class="fas fa-train"></i><span>PNR Check</span></div>
+            <div class="product"><i class="fas fa-shipping-fast"></i><span>Tracking</span></div>
         </div>
     </div>
 
-    <div id="bill-products" class="hidden bg-white rounded-lg shadow-md p-6 m-4 relative">
-        <button class="absolute top-2 right-2 text-gray-500" onclick="toggleProducts('bill-products')">
-            <i class="fas fa-times text-2xl"></i>
+    <div id="bill-products" class="hidden product-modal">
+        <button class="close-button" onclick="toggleProducts('bill-products')">
+            <i class="fas fa-times"></i>
         </button>
-        <h2 class="text-xl font-semibold mb-4">Bill Payments</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="flex flex-col items-center">
-                <i class="fas fa-wifi text-3xl text-blue-500 mb-2"></i>
-                <span>Broadband / Landline</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-graduation-cap text-3xl text-blue-500 mb-2"></i>
-                <span>Education</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-money-check-alt text-3xl text-blue-500 mb-2"></i>
-                <span>Pay Loan</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-building text-3xl text-blue-500 mb-2"></i>
-                <span>Apartments</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-gas-pump text-3xl text-blue-500 mb-2"></i>
-                <span>Piped Gas</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-tint text-3xl text-blue-500 mb-2"></i>
-                <span>Water Bill</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-city text-3xl text-blue-500 mb-2"></i>
-                <span>Municipal Tax</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-ticket-alt text-3xl text-blue-500 mb-2"></i>
-                <span>Challan</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-road text-3xl text-blue-500 mb-2"></i>
-                <span>Toll</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-tv text-3xl text-blue-500 mb-2"></i>
-                <span>Cable TV</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-sim-card text-3xl text-blue-500 mb-2"></i>
-                <span>Data Card</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-car text-3xl text-blue-500 mb-2"></i>
-                <span>FASTag Recharge</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-subway text-3xl text-blue-500 mb-2"></i>
-                <span>Metro</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-praying-hands text-3xl text-blue-500 mb-2"></i>
-                <span>Devotion</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-hand-holding-heart text-3xl text-blue-500 mb-2"></i>
-                <span>Donation</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-shopping-cart text-3xl text-blue-500 mb-2"></i>
-                <span>Book & Buy</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-car text-3xl text-blue-500 mb-2"></i>
-                <span>FASTag</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-coins text-3xl text-blue-500 mb-2"></i>
-                <span>Gold</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-shield-alt text-3xl text-blue-500 mb-2"></i>
-                <span>Insurance</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-ticket-alt text-3xl text-blue-500 mb-2"></i>
-                <span>IMAX Tickets</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-train text-3xl text-blue-500 mb-2"></i>
-                <span>PNR Check</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-shipping-fast text-3xl text-blue-500 mb-2"></i>
-                <span>Tracking</span>
-            </div>
-        </div>
-    </div>
-    <div class="bg-gray-100">
-
-    <!-- Customer Support Banner -->
-    <div class="bg-blue-900 text-white flex items-center justify-between p-4 rounded-full w-full max-w-4xl mx-auto">
-        <div class="flex items-center">
-            <img alt="Paytm and UPI logos" class="rounded-full mr-4"  src="https://storage.googleapis.com/a1aa/image/wa9RQcjeCqwx2O01UeAyzY8cbeqre3XY07lFAG-w1GU.jpg" width="40"/>
-            <span class="text-lg">24×7 Trusted customer support to assist and help you in every step of your journey</span>
-        </div>
-        <button class="bg-transparent border border-white text-white py-2 px-4 rounded-full hover:bg-white hover:text-blue-900 transition duration-300">
-            Learn More →
-        </button>
-    </div>
-
-    <!-- Main Content -->
-    <div class="max-w-7xl mx-auto p-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Credit Cards Section -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center mb-4">
-                    <i class="fas fa-credit-card text-blue-600 text-2xl mr-2"></i>
-                    <h2 class="text-xl font-semibold">Credit Cards</h2>
-                </div>
-                <h1 class="text-3xl font-bold mb-2">One destination for Credit Cards</h1>
-                <p class="text-gray-700 mb-4">Paytm HDFC, SBI & Axis Bank Credit Card with assured Cashback and incredible offers.</p>
-                <div class="flex items-center mb-4">
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg mr-2">Apply Now <i class="fas fa-arrow-right ml-1"></i></button>
-                    <img alt="SBI logo" class="h-10 w-10 mr-2" src="https://storage.googleapis.com/a1aa/image/1dOvGxXd3YX8IZJnzJxmg4n50YpP0o8UjJ0pJwkmpMA.jpg" />
-                    <img alt="HDFC Bank logo" class="h-10 w-10 mr-2" src="https://storage.googleapis.com/a1aa/image/0q5PoO_-t6sVch-LqwfNMwZACLoBZZi2X_JsU7lCfYk.jpg" />
-                    <img alt="Kotak logo" class="h-10 w-10" src="https://storage.googleapis.com/a1aa/image/42ega3CZGP-8qBBVinTmYRvvUA3IFoOWO3RDOBhAupQ.jpg" />
-                </div>
-                <img alt="Credit cards image" class="h-15 w-15" src="https://storage.googleapis.com/a1aa/image/RcEUSz5ZYJyARfTKN5ALbrC9VzO-1Jq-q5oM9RLuO5M.jpg"/>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center mb-4">
-                    <img alt="Paytm Insurance logo" class="h-10 w-10 mr-2" src="https://storage.googleapis.com/a1aa/image/DZzzAFIVCB6WXHEHiIBYM8kDiSHudQTGU6ZPbQdFS7U.jpg" />
-                    <h2 class="text-xl font-semibold">Insurance Broking</h2>
-                </div>
-                <h1 class="text-3xl font-bold mb-2">Insurance made easy.</h1>
-                <p class="text-gray-700 mb-4">Buying insurance does not have to be tedious, time-consuming & confusing. Paytm Insurance removes the worry of getting insured by making it simple, convenient & easy-to-understand.</p>
-                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg mb-4">Get It Now <i class="fas fa-arrow-right ml-1"></i></button>
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    
-                </div>
-                <img alt="Mobile app showing insurance options" class="h-15" src="https://storage.googleapis.com/a1aa/image/8BRbf6PEyprNNclLRfz_hVbEQFdPYtqr5_upqVNUYC4.jpg" />
-            </div>
-        </div>
-    </div>
-    <hr gap="20px">
-
-        <div class="flex items-center justify-between border-b pb-2 mb-4">
-            <div class="flex items-center space-x-2">
-                <i class="fas fa-times text-xl"></i>
-                <span class="font-semibold text-lg">Investor Relations</span>
-            </div>
-            <div class="flex space-x-4">
-                <a href="#" class="text-gray-600">Home</a>
-                <a href="#" class="text-gray-600">Financials</a>
-                <a href="#" class="text-gray-600">Filings & Press Releases</a>
-                <a href="#" class="text-gray-600">News & Events</a>
-                <a href="#" class="text-gray-600">Corporate Governance</a>
-                <a href="#" class="text-gray-600">Resources</a>
-            </div>
-        </div>
-        <div class="space-y-4">
-            <div class="flex items-center justify-between border-b pb-2">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-plus text-xl"></i>
-                    <span class="font-semibold">More about Paytm</span>
-                </div>
-            </div>
-            <div class="flex items-center justify-between border-b pb-2">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-plus text-xl"></i>
-                    <span class="font-semibold">Company</span>
-                </div>
-            </div>
-            <div class="flex items-center justify-between border-b pb-2">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-plus text-xl"></i>
-                    <span class="font-semibold">Important Updates</span>
-                </div>
-            </div>
-            <div class="flex items-center justify-between border-b pb-2">
-                <span class="font-semibold">Career</span>
-            </div>
-            <div class="flex items-center justify-between border-b pb-2">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-plus text-xl"></i>
-                    <span class="font-semibold">Recharge & pay bills</span>
-                </div>
-            </div>
-            <div class="flex items-center justify-between border-b pb-2">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-plus text-xl"></i>
-                    <span class="font-semibold">Pay Loan EMI, Insurance Premiums & Education Fee</span>
-                </div>
-            </div>
-            <div class="flex items-center justify-between border-b pb-2">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-plus text-xl"></i>
-                    <span class="font-semibold">Book Travel & Entertainment</span>
-                </div>
-            </div>
-            <div class="flex items-center justify-between border-b pb-2">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-plus text-xl"></i>
-                    <span class="font-semibold">Investments & Miscellaneous</span>
-                </div>
-            </div>
-            <div class="flex items-center justify-between border-b pb-2">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-plus text-xl"></i>
-                    <span class="font-semibold">Loans and Credit Cards</span>
-                </div>
-            </div>
-            <div class="flex items-center justify-between border-b pb-2">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-plus text-xl"></i>
-                    <span class="font-semibold">Financial Tools & Calculators</span>
-                </div>
-            </div>
+        <h2>Bill Payments</h2>
+        <div class="product-grid">
+            <div class="product"><i class="fas fa-wifi"></i><span>Broadband / Landline</span></div>
+            <div class="product"><i class="fas fa-graduation-cap"></i><span>Education</span></div>
+            <div class="product"><i class="fas fa-money-check-alt"></i><span>Pay Loan</span></div>
+            <div class="product"><i class="fas fa-building"></i><span>Apartments</span></div>
+            <div class="product"><i class="fas fa-gas-pump"></i><span>Piped Gas</span></div>
+            <div class="product"><i class="fas fa-tint"></i><span>Water Bill</span></div>
+            <div class="product"><i class="fas fa-city"></i><span>Municipal Tax</span></div>
+            <div class="product"><i class="fas fa-ticket-alt"></i><span>Challan</span></div>
+            <div class="product"><i class="fas fa-road"></i><span>Toll</span></div>
+            <div class="product"><i class="fas fa-tv"></i><span>Cable TV</span></div>
+            <div class="product"><i class="fas fa-sim-card"></i><span>Data Card</span></div>
+            <div class="product"><i class="fas fa-car"></i><span>FASTag Recharge</span></div>
+            <div class="product"><i class="fas fa-subway"></i><span>Metro</span></div>
+            <div class="product"><i class="fas fa-praying-hands"></i><span>Devotion</span></div>
+            <div class="product"><i class="fas fa-hand-holding-heart"></i><span>Donation</span></div>
+            <div class="product"><i class="fas fa-shopping-cart"></i><span>Book & Buy</span></div>
+            <div class="product"><i class="fas fa-car"></i><span>FASTag</span></div>
+            <div class="product"><i class="fas fa-coins"></i><span>Gold</span></div>
+            <div class="product"><i class="fas fa-shield-alt"></i><span>Insurance</span></div>
+            <div class="product"><i class="fas fa-ticket-alt"></i><span>IMAX Tickets</span></div>
+            <div class="product"><i class="fas fa-train"></i><span>PNR Check</span></div>
+            <div class="product"><i class="fas fa-shipping-fast"></i><span>Tracking</span></div>
         </div>
     </div>
 
+    <div class="customer-support">
+        <div class="support-banner">
+            <img alt="Paytm and UPI logos" src="https://storage.googleapis.com/a1aa/image/wa9RQcjeCqwx2O01UeAyzY8cbeqre3XY07lFAG-w1GU.jpg" width="40"/>
+            <span>24×7 Trusted customer support to assist and help you in every step of your journey</span>
+            <button>Learn More →</button>
+        </div>
+    </div>
 
-    <footer class="bg-white">
-        <div class="border-t border-gray-300 py-4 flex justify-between items-center px-4">
-            <span class="text-gray-500">&copy; 2025 Paytm</span>
-            <div class="flex items-center space-x-2">
-                <span class="text-gray-500">Follow Us</span>
-                <a href="#" class="text-black"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="text-black"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-black"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="text-black"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="text-black"><i class="fab fa-instagram"></i></a>
+    <div class="main-content">
+        <div class="credit-cards">
+            <div class="credit-card-header">
+                <i class="fas fa-credit-card"></i>
+                <h2>Credit Cards</h2>
+            </div>
+            <h1>One destination for Credit Cards</h1>
+            <p>Paytm HDFC, SBI & Axis Bank Credit Card with assured Cashback and incredible offers.</p>
+            <div class="credit-card-logos">
+                <button>Apply Now <i class="fas fa-arrow-right"></i></button>
+                <img src="https://storage.googleapis.com/a1aa/image/1dOvGxXd3YX8IZJnzJxmg4n50YpP0o8UjJ0pJwkmpMA.jpg" />
+                <img src="https://storage.googleapis.com/a1aa/image/0q5PoO_-t6sVch-LqwfNMwZACLoBZZi2X_JsU7lCfYk.jpg" />
+                <img src="https://storage.googleapis.com/a1aa/image/42ega3CZGP-8qBBVinTmYRvvUA3IFoOWO3RDOBhAupQ.jpg" />
+            </div>
+            <img src="https://storage.googleapis.com/a1aa/image/RcEUSz5ZYJyARfTKN5ALbrC9VzO-1Jq-q5oM9RLuO5M.jpg"/>
+        </div>
+        <div class="insurance">
+            <div class="insurance-header">
+                <img src="https://storage.googleapis.com/a1aa/image/DZzzAFIVCB6WXHEHiIBYM8kDiSHudQTGU6ZPbQdFS7U.jpg" />
+                <h2>Insurance Broking</h2>
+            </div>
+            <h1>Insurance made easy.</h1>
+            <p>Buying insurance does not have to be tedious, time-consuming & confusing. Paytm Insurance removes the worry of getting insured by making it simple, convenient & easy-to-understand.</p>
+            <button>Get It Now <i class="fas fa-arrow-right"></i></button>
+            <img src="https://storage.googleapis.com/a1aa/image/8BRbf6PEyprNNclLRfz_hVbEQFdPYtqr5_upqVNUYC4.jpg" />
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2025 Paytm</span>
+            <div class="social-media">
+                <span>Follow Us</span>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
-        <div class="bg-blue-500 h-2"></div>
-        <div class="bg-blue-800 h-2"></div>
+        <div class="footer-divider"></div>
     </footer>
     <script src="./script.js"></script>
 </body>

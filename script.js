@@ -1,23 +1,18 @@
-function showTab(tab) {
-    document.getElementById('flights').classList.add('hidden');
-    document.getElementById('bus').classList.add('hidden');
-    document.getElementById('trains').classList.add('hidden');
-    document.getElementById('intl-flights').classList.add('hidden');
-    document.getElementById(tab).classList.remove('hidden');
+function showTab(tabName) {
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => {
+        tab.classList.add('hidden');
+    });
+    document.getElementById(tabName).classList.remove('hidden');
 
-    document.getElementById('flights-tab').classList.remove('border-b-2', 'border-blue-500');
-    document.getElementById('bus-tab').classList.remove('border-b-2', 'border-blue-500');
-    document.getElementById('trains-tab').classList.remove('border-b-2', 'border-blue-500');
-    document.getElementById('intl-flights-tab').classList.remove('border-b-2', 'border-blue-500');
-    document.getElementById(tab + '-tab').classList.add('border-b-2', 'border-blue-500');
+    const tabLinks = document.querySelectorAll('.tab');
+    tabLinks.forEach(link => {
+        link.classList.remove('active');
+    });
+    document.getElementById(tabName + '-tab').classList.add('active');
 }
 
-function toggleProducts(id) {
-    const element = document.getElementById(id);
-    if (element.classList.contains('hidden')) {
-        element.classList.remove('hidden');
-    } else {
-        element.classList.add('hidden');
-    }
+function toggleProducts(productId) {
+    const productModal = document.getElementById(productId);
+    productModal.classList.toggle('hidden');
 }
-
